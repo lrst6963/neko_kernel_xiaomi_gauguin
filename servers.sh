@@ -65,11 +65,11 @@ ZIMAGE_DIR="$KERNEL_DIR/out/arch/arm64/boot"
 make_config(){
 	echo -e "$cyan**** Kernel defconfig is set to $KERNEL_DEFCONFIG ****$een"
 	make ARCH=$ARCH ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- $KERNEL_DEFCONFIG O=out CC=clang
-# 	make menuconfig O=out
+ 	make menuconfig O=out
 # 	echo 'CONFIG_KPROBES=y
 # 	CONFIG_KPROBE_EVENTS=y
 # 	' >> $DIR/out/.config
-# 	nvim $DIR/out/.config
+ 	nvim $DIR/out/.config
 # 	cat $DIR/out/.config
 }
 
@@ -135,10 +135,10 @@ $green		5.$een EXIT(stop this script)
 		            pause
 		            ;;
 		        "2")
-#					make_clean
+					make_clean
 					make_config
 					make_kernel
-					if [ "$?"=="0" ];then
+					if [ "$?" == "0" ];then
 						echo -e "\n$green Kernel build done $een\n Time:$yellow $(expr $(date "+%s") - $START_TIME)s $een"
 						make_target
 						echo -e "\e[32mBUILD DONE!\e[0m"
